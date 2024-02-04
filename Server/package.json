@@ -1,0 +1,27 @@
+{
+  "name": "chat-app-mern-stack",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000h\u0000a\u0000t\u0000-\u0000A\u0000p\u0000p\u0000l\u0000i\u0000c\u0000a\u0000t\u0000i\u0000o\u0000n\u0000-\u0000M\u0000E\u0000R\u0000N\u0000-\u0000s\u0000t\u0000a\u0000c\u0000k\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamedAmineNasri/Chat-Application-MERN-stack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohamedAmineNasri/Chat-Application-MERN-stack/issues"
+  },
+  "homepage": "https://github.com/MohamedAmineNasri/Chat-Application-MERN-stack#readme",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "js-sha256": "^0.11.0",
+    "jwt-then": "^1.0.1",
+    "mongoose": "^8.1.1",
+    "nodemon": "^3.0.3"
+  }
+}
