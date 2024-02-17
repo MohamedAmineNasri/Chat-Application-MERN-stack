@@ -3,7 +3,7 @@ import React from "react";
 import makeToast from "../Toaster";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const emailref = React.createRef();
   const passwordref = React.createRef();
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const LoginPage = () => {
         localStorage.setItem("token", response.data.token);
         //console.log(response.data);
         navigate("/dashboard");
+        props.setupSocket();
       })
       .catch((err) => {
         makeToast("error", err.response.data.message);

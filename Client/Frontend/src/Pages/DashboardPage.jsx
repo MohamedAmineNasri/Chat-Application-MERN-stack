@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const DashboardPage = () => {
+const DashboardPage = (props) => {
   const [chatrooms, setchatrooms] = useState([]);
+  props.socket;
   const getChatrooms = () => {
     axios
       .get("http://localhost:8000/chatroom", {
