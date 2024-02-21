@@ -12,7 +12,7 @@ function App() {
   const [socket, setSocket] = useState(null);
   const setupSocket = () => {
     const token = localStorage.getItem("token");
-    if (token && token.length > 0 && !socket) {
+    if (token && !socket) {
       const newsocket = io("http://localhost:8000", {
         query: {
           token: localStorage.getItem("token"),
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     setupSocket();
-  }, []); // Added dependency array to run the effect only once on mount
+  }, []); 
 
   return (
     <BrowserRouter>
