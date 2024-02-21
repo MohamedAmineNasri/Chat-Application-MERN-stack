@@ -5,6 +5,7 @@ const ChatRoomPage = (props) => {
   const { id } = useParams();
   const { socket } = props;
   const [messages, setMessages] = useState([]);
+  const [userId, setUserId] = useState("");
   const messageRef = useRef();
 
   const sendMessage = () => {
@@ -16,8 +17,13 @@ const ChatRoomPage = (props) => {
       messageRef.current.value = "";
     }
   };
-  
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      setUserId(payload.id);
+    }
     if (socket) {
       socket.on("newMessage", (message) => {
         const newMessages = [...messages, message];
@@ -26,8 +32,7 @@ const ChatRoomPage = (props) => {
     }
     //eslint-disable-next-line
   }, [messages]);
-  
-  
+
   useEffect(() => {
     if (socket) {
       socket.emit("joinRoom", {
@@ -48,9 +53,15 @@ const ChatRoomPage = (props) => {
       <div className="chatroomSection">
         <div className="cardHeader">Chatroom Name</div>
         <div className="chatroomContent">
-          {messages.map((message,i) => (
+          {messages.map((message, i) => (
             <div key={i} className="message">
-              <span className="ownMessage">{message.name}:</span>{" "}
+              <span
+                className={
+                  userId === message.userId ? "ownMessage" : "otherMessage"
+                }
+              >
+                {message.name}:
+              </span>{" "}
               {message.message}
             </div>
           ))}
